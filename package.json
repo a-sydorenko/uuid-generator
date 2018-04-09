@@ -1,0 +1,26 @@
+{
+  "name": "fast-uuid",
+  "version": "1.0.0",
+  "description": "fast uuid v4 generator",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Alex Sydorenko",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/a-sydorenko/uuid-generator.git"
+  },
+  "keywords": [
+    "uuid",
+    "uuid4"
+  ],
+  "bugs": {
+    "url": "https://github.com/a-sydorenko/uuid-generator/issues"
+  },
+  "homepage": "https://github.com/a-sydorenko/uuid-generator#readme"
+}
