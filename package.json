@@ -1,6 +1,6 @@
 {
   "name": "fast-uuid",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "fast uuid v4 generator",
   "main": "index.js",
   "directories": {

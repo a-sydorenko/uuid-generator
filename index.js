@@ -2,8 +2,6 @@
 
 exports.uuid4 = uuid4
 
-let getChar = (x, b) => (Math.random() * x | b).toString(16)
-
 function uuid4 () {
   let uuid = ''
 
@@ -14,13 +12,14 @@ function uuid4 () {
         uuid += '-4'
         break
       case 16 :
-        uuid += '-' + getChar(4, 8)
+        uuid += '-' + (Math.random() * 4 | 8).toString(16)
         break
       case 20 :
-        uuid += '-' + getChar(16, 0)
+        uuid += '-' + Math.trunc(Math.random() * 16).toString(16)
+
         break
       default:
-        uuid += getChar(16, 0)
+        uuid += Math.trunc(Math.random() * 16).toString(16)
     }
   }
 
