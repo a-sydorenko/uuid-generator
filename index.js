@@ -2,6 +2,7 @@
 
 module.exports = {
   uuid4,
+  uuid4Async,
   uuid4Clear
 }
 
@@ -11,13 +12,13 @@ function uuid4 () {
   let i = 0
   while (i < 32) {
     switch (i) {
-      case 8 :
       case 12 :
         uuid += '-4'
         break
       case 16 :
         uuid += '-' + (Math.random() * 4 | 8).toString(16)
         break
+      case 8 :
       case 20 :
         uuid += '-' + Math.trunc(Math.random() * 16).toString(16)
 
@@ -37,10 +38,10 @@ function uuid4Clear () {
   let i = 0
   while (i < 32) {
     switch (i) {
-      case 8 :
       case 12 :
         uuid += '4'
         break
+      case 8 :
       case 16 :
         uuid += (Math.random() * 4 | 8).toString(16)
         break
@@ -51,4 +52,32 @@ function uuid4Clear () {
   }
 
   return uuid
+}
+
+function uuid4Async () {
+  return new Promise((resolve) => {
+    iterator('', 0, resolve)
+  })
+}
+
+function iterator (uuid, i, cb) {
+  setImmediate(() => {
+    switch (i) {
+      case 12 :
+        uuid += '-4'
+        break
+      case 16 :
+        uuid += '-' + (Math.random() * 4 | 8).toString(16)
+        break
+      case 8 :
+      case 20 :
+        uuid += '-' + Math.trunc(Math.random() * 16).toString(16)
+        break
+      case 32 :
+        return cb(uuid)
+      default:
+        uuid += Math.trunc(Math.random() * 16).toString(16)
+    }
+    iterator(uuid, ++i, cb)
+  })
 }
